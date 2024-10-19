@@ -8,3 +8,38 @@
   width: 5em;
   height: 2em;
 }
+
+
+.accordion {
+  padding: 0px;
+}
+
+.accordion-item {
+  list-style-type: none;
+}
+
+.accordion-item label:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.accordion-item label:first-of-type span{
+  transform: rotate(90deg);
+}
+
+.accordion-item label + input[type="radio"] {
+  display: none;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s;
+}
+
+.accordion-item label + input[type="radio"]:checked + .accordion-content {
+  max-height: 100vh;
+  overflow-y: auto;
+}
