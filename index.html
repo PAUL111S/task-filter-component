@@ -14,7 +14,7 @@
         </svg>
     </button>
     <div class="panel">
-        <form>
+        <form name="accordion">
             <div class="toolbar">
                 <span>Filters</span>
                 <button id="clear-all" type="button">Clear All</button>
@@ -29,7 +29,7 @@
                     <label for="investment-vehicle">
                         Investment vehicle <span>&#x3e;</span>
                     </label>
-                    <input type="radio"  id="investment-vehicle" name="item">
+                    <input type="radio"  id="investment-vehicle" name="accordion-item">
                     <div class="investment-vehicle">
 
                     </div>
@@ -38,52 +38,74 @@
                     <label for="company">
                         Company <span>&#x3e;</span>
                     </label>
-                    <input type="radio" id="company" name="item">
+                    <input type="radio" id="company" name="accordion-item">
 
                     <div class="accordion-content">
 
-                        <input type="checkbox" name="aircall" id="aircall">
-                        <label for="aircall">Aircall</label><br>
+                        <span>
+                            <input type="checkbox" name="aircall" id="aircall">
+                            <label for="aircall">Aircall</label>
+                        </span>
                         
-                        <input type="checkbox" name="foxintelligence" id="foxintelligence">
-                        <label for="foxintelligence">Foxintelligence</label><br>
-                     
-                        <input type="checkbox" name="spendesk" id="spendesk">
-                        <label for="spendesk">Spendesk</label><br>
+                        <span>  
+                            <input type="checkbox" name="foxintelligence" id="foxintelligence">
+                            <label for="foxintelligence">Foxintelligence</label>
+                        </span>
 
-                        <input type="checkbox" name="upflow" id="upflow">
-                        <label for="upflow">Upflow</label><br>
+                        <span>
+                            <input type="checkbox" name="spendesk" id="spendesk">
+                            <label for="spendesk">Spendesk</label>
+                        </span>
 
-                        <input type="checkbox" name="yousign" id="yousign">
-                        <label for="yousign">Yousign</label><br>
+                        <span>
+                            <input type="checkbox" name="upflow" id="upflow">
+                            <label for="upflow">Upflow</label>
+                        </span>
 
-                        <input type="checkbox" name="company1" id="company1">
-                        <label for="company1">Company 1</label><br>
+                        <span>
+                            <input type="checkbox" name="yousign" id="yousign">
+                            <label for="yousign">Yousign</label>
+                        </span>
 
-                        <input type="checkbox" name="company2" id="company2">
-                        <label for="company2">Company 2</label><br>
-                    </div>                 
+                        <span>
+                            <input type="checkbox" name="company1" id="company1">
+                            <label for="company1">Company 1</label>
+                        </span>
+
+                        <span>
+                            <input type="checkbox" name="company2" id="company2">
+                            <label for="company2">Company 2</label>
+                        </span>
+
+                        <span>
+                            <button type="button" name="view-all" class="btn-view-all">
+                                View all
+                            </button>
+                        </span>
+                    </div>          
                 </li>
                 <li class="accordion-item">
                     <label for="deal-source">
                         Deal source <span>&#x3e;</span>
                     </label>
-                    <input type="radio" id="deal-source" name="item">      
+                    <input type="radio" id="deal-source" name="accordion-item">      
                 </li>
                 <li class="accordion-item">
                     <label for="status">
                         Status <span>&#x3e;</span>
                     </label>
-                    <input type="radio" id="status" name="item">      
+                    <input type="radio" id="status" name="accordion-item">      
                 </li>
                 <li class="accordion-item">
                     <label for="date">
                         Date <span>&#x3e;</span>
                     </label>
-                    <input type="radio" id="date" name="item">      
+                    <input type="radio" id="date" name="accordion-item">      
                 </li>
             </ul>
         </form>
     </div>
+    
+    <script src="main.js"></script>
 </body>
 </html>
