@@ -3,12 +3,15 @@ const accordion_items = document.getElementsByName("accordion-item");
 const labels = document.querySelectorAll('.accordion-content label');
 const inputs = document.querySelectorAll('.accordion-content input');
 
+const btn_filter_panel = document.querySelector('.btn-filter-panel');
+
 const btn_clear_all = document.querySelector('#clear-all');
 const btn_safe_view = document.querySelector('#save-view');
 
 
 btn_clear_all.onclick = clear_all;
 btn_safe_view.onclick = save_view;
+btn_filter_panel.onclick = toggle_panel;
 
 for (accordion_item of accordion_items){
 
@@ -71,5 +74,19 @@ function save_view() {
             console.log(input.id)
         }
     })
+
+    toggle_panel();
 }
 
+
+function toggle_panel() {
+    const panel = document.querySelector('.panel');
+    const displayStyle = window.getComputedStyle(panel).display;
+
+    if (displayStyle === "none"){
+        panel.style.display = "block";
+    }
+    else {
+        panel.style.display = "none";
+    }
+}
