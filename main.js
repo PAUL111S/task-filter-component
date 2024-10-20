@@ -1,7 +1,14 @@
-let accordion_items = document.getElementsByName("accordion-item");
+const accordion_items = document.getElementsByName("accordion-item");
 
 const labels = document.querySelectorAll('.accordion-content label');
 const inputs = document.querySelectorAll('.accordion-content input');
+
+const btn_clear_all = document.querySelector('#clear-all');
+const btn_safe_view = document.querySelector('#save-view');
+
+
+btn_clear_all.onclick = clear_all;
+btn_safe_view.onclick = save_view;
 
 for (accordion_item of accordion_items){
 
@@ -47,5 +54,22 @@ function view_selection () {
         }
     }
 
+}
+
+
+function clear_all() {
+
+    inputs.forEach((input)=>{
+        input.checked = false;
+    })
+}
+
+function save_view() {
+
+    inputs.forEach((input)=>{
+        if (input.checked) {
+            console.log(input.id)
+        }
+    })
 }
 
