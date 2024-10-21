@@ -1,34 +1,84 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
 .filter-component {
   display: inline-block;
   position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1em;
 }
 
 .btn-filter-panel {
   border-color: gray;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1em;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 5em;
-  height: 2em;
+  height: 2.5em;
   position: relative;
 }
 
 .panel {
   position: absolute;
   display: none;
-  top: 2.5em;
   right: 0;
-  width: 250px;
+  border: grey;
+  border-style: solid;
+  border-width: 2px;
+  margin-top: 5px;
 }
+
+.toolbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.25em;
+  padding: 0 10px 0 10px;
+}
+
+.search-bar {
+  padding: 0 10px 0 10px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.blue-color {
+  background-color: transparent;
+  color: #8085cb;
+}
+
+.toolbar button {
+  margin: 1em;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-view-all {
+  border: none;
+  background-color: transparent;
+  color: #8085cb;
+  cursor: pointer;
+}
+
+.accordion-item label span {
+  font-size: 2em;
+}
+
 
 .accordion {
   padding: 0px;
 }
 
 .accordion-item {
+  display: flex;
+  flex-direction: column;
   list-style-type: none;
+  border-top: 1px solid black;
+  margin-top: 10px;
 }
 
 .accordion-item label:first-child {
@@ -52,9 +102,10 @@
   transition: max-height 0.5s;
   display: flex;
   flex-direction: column;
+  background-color: rgba(193, 193, 193, 0.51);
+  padding: 0 10px 0 10px;
   
 }
-
 
 .accordion-item label + input[type="radio"]:checked + .accordion-content {
   max-height: 100vh;
