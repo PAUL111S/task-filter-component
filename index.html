@@ -1,112 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Filter-Komponente</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <div class="filter-component">
-            <button class="btn-filter-panel" type="button">
-            Filter
-               <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                   <path d="M3 4.6C3 4.03995 3 3.75992 3.10899 3.54601C3.20487 3.35785 3.35785 3.20487 3.54601 3.10899C3.75992 3 4.03995 3 4.6 3H19.4C19.9601 3 20.2401 3 20.454 3.10899C20.6422 3.20487 20.7951 3.35785 20.891 3.54601C21 3.75992 21 4.03995 21 4.6V6.33726C21 6.58185 21 6.70414 20.9724 6.81923C20.9479 6.92127 20.9075 7.01881 20.8526 7.10828C20.7908 7.2092 20.7043 7.29568 20.5314 7.46863L14.4686 13.5314C14.2957 13.7043 14.2092 13.7908 14.1474 13.8917C14.0925 13.9812 14.0521 14.0787 14.0276 14.1808C14 14.2959 14 14.4182 14 14.6627V17L10 21V14.6627C10 14.4182 10 14.2959 9.97237 14.1808C9.94787 14.0787 9.90747 13.9812 9.85264 13.8917C9.7908 13.7908 9.70432 13.7043 9.53137 13.5314L3.46863 7.46863C3.29568 7.29568 3.2092 7.2092 3.14736 7.10828C3.09253 7.01881 3.05213 6.92127 3.02763 6.81923C3 6.70414 3 6.58185 3 6.33726V4.6Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-               </svg>
-           </button>
-           <div class="panel">
-               <form name="accordion">
-                   <div class="toolbar">
-                       <span class="bold">Filters</span>
-                       <button id="clear-all" type="button" class="blue-color">Clear All</button>
-                       <span class="blue-color">-</span>
-                       <button id="save-view" type="button" class="blue-color">Save View</button>
-                   </div>
-                   <div class="search-bar">
-                       <input type="search" placeholder="Search">
-                   </div>
-                   <ul class="accordion">
-                       <li class="accordion-item">
-                           <label for="investment-vehicle" class="bold">
-                               Investment vehicle <span>&#x3e;</span>
-                           </label>
-                           <input type="radio"  id="investment-vehicle" name="accordion-item">
-                           <div class="investment-vehicle">
-       
-                           </div>
-                       </li>
-                       <li class="accordion-item">
-                           <label for="company" class="bold">
-                               Company <span>&#x3e;</span>
-                           </label>
-                           <input type="radio" id="company" name="accordion-item">
-       
-                           <div class="accordion-content">
-       
-                               <span>
-                                   <input type="checkbox" name="aircall" id="aircall">
-                                   <label for="aircall">Aircall</label>
-                               </span>
-                               
-                               <span>  
-                                   <input type="checkbox" name="foxintelligence" id="foxintelligence">
-                                   <label for="foxintelligence">Foxintelligence</label>
-                               </span>
-       
-                               <span>
-                                   <input type="checkbox" name="spendesk" id="spendesk">
-                                   <label for="spendesk">Spendesk</label>
-                               </span>
-       
-                               <span>
-                                   <input type="checkbox" name="upflow" id="upflow">
-                                   <label for="upflow">Upflow</label>
-                               </span>
-       
-                               <span>
-                                   <input type="checkbox" name="yousign" id="yousign">
-                                   <label for="yousign">Yousign</label>
-                               </span>
-       
-                               <span>
-                                   <input type="checkbox" name="company1" id="company1">
-                                   <label for="company1">Company 1</label>
-                               </span>
-       
-                               <span>
-                                   <input type="checkbox" name="company2" id="company2">
-                                   <label for="company2">Company 2</label>
-                               </span>
-       
-                               <span>
-                                   <button type="button" name="view-all" class="btn-view-all">
-                                       View all...
-                                   </button>
-                               </span>
-                           </div>          
-                       </li>
-                       <li class="accordion-item">
-                           <label for="deal-source" class="bold">
-                               Deal source <span>&#x3e;</span>
-                           </label>
-                           <input type="radio" id="deal-source" name="accordion-item">      
-                       </li>
-                       <li class="accordion-item">
-                           <label for="status" class="bold">
-                               Status <span>&#x3e;</span>
-                           </label>
-                           <input type="radio" id="status" name="accordion-item">      
-                       </li>
-                       <li class="accordion-item">
-                           <label for="date" class="bold">
-                               Date <span>&#x3e;</span>
-                           </label>
-                           <input type="radio" id="date" name="accordion-item">      
-                       </li>
-                   </ul>
-               </form>
-           </div>
-    </div>    
+      <button type="button" class="panel-btn">
+        Filter
+        <img
+          class="filter-icon"
+          src="filter-svgrepo-com.svg"
+          alt="Filter icon"
+        />
+      </button>
+      <form class="panel">
+        <div class="toolbar">
+          <span class="toolbar-name">Filters</span>
+          <div class="toolbar-functions">
+            <button type="button" class="clear-all">Clear all</button>
+            -
+            <button type="button" class="save-view">Save view</button>
+          </div>
+        </div>
+        <div class="search-bar">
+          <input
+            type="search"
+            name="search-bar"
+            id="search-bar"
+            placeholder="Search"
+          />
+          <img
+            src="search-svgrepo-com.svg"
+            alt="Search icon"
+            class="search-icon"
+          />
+        </div>
+        <ul class="accordion">
+          <li class="accordion-item">
+            <div class="accordion-item-head">
+              <input
+                type="checkbox"
+                name="filter-section"
+                id="investment-vehicle"
+              />
+              <label for="investment-vehicle"
+                >Investment vehicle
+                <img
+                  class="open-closed-icon"
+                  src="angle-bottom-icon.svg"
+                  alt="Open or closed icon"
+                />
+              </label>
+            </div>
+            <div class="accordion-item-body hide">
+              <div class="accordion-item-content">
+                <ul class="filter-options">
+                  <li class="filter-option">
+                    <input
+                      type="checkbox"
+                      name="equity-funds"
+                      id="equity-funds"
+                      class="filter-option-checkbox"
+                    />
+                    <label for="equity-funds">Equity Funds</label>
+                  </li>
+                  <li class="filter-option">
+                    <input
+                      type="checkbox"
+                      name="bond-funds"
+                      id="bond-funds"
+                      class="filter-option-checkbox"
+                    />
+                    <label for="bond-funds">Bond Funds</label>
+                  </li>
+                  <li class="filter-option">
+                    <input
+                      type="checkbox"
+                      name="exchange-traded-funds"
+                      id="exchange-traded-funds"
+                      class="filter-option-checkbox"
+                    />
+                    <label for="exchange-traded-funds">ETFS</label>
+                  </li>
+                  <li class="filter-option">
+                    <input
+                      type="checkbox"
+                      name="real-estate-investment-trusts"
+                      id="real-estate-investment-trusts"
+                      class="filter-option-checkbox"
+                    />
+                    <label for="real-estate-investment-trusts"> REITs </label>
+                  </li>
+                  <li class="filter-option">
+                    <input
+                      type="checkbox"
+                      name="venture-capital-fonds"
+                      id="venture-capital-fonds"
+                      class="filter-option-checkbox"
+                    />
+                    <label for="venture-capital-fonds"
+                      >Venture Capital Fonds</label
+                    >
+                  </li>
+                </ul>
+                <button type="button" class="view-all">View all...</button>
+              </div>
+            </div>
+          </li>
+          <li class="accordion-item">
+            <div class="accordion-item-head">
+              <input type="checkbox" name="filter-section" id="company" />
+              <label for="company"
+                >Company
+                <img
+                  class="open-closed-icon"
+                  src="angle-bottom-icon.svg"
+                  alt="Open or closed icon"
+                />
+              </label>
+            </div>
+            <div class="accordion-item-body hide">
+              <div class="accordion-item-content">
+                <ul class="filter-options">
+                  <li class="filter-option">
+                    <input
+                      type="checkbox"
+                      name="aircall"
+                      id="aircall"
+                      class="filter-option-checkbox"
+                    />
+                    <label for="aircall">Aircall</label>
+                  </li>
+                  <li class="filter-option">
+                    <input
+                      type="checkbox"
+                      name="foxintelligence"
+                      id="foxintelligence"
+                      class="filter-option-checkbox"
+                    />
+                    <label for="foxintelligence">Foxintelligence</label>
+                  </li>
+                  <li class="filter-option">
+                    <input
+                      type="checkbox"
+                      name="spendesk"
+                      id="spendesk"
+                      class="filter-option-checkbox"
+                    />
+                    <label for="spendesk">Spendesk</label>
+                  </li>
+                  <li class="filter-option">
+                    <input
+                      type="checkbox"
+                      name="upflow"
+                      id="upflow"
+                      class="filter-option-checkbox"
+                    />
+                    <label for="upflow">Upflow</label>
+                  </li>
+                  <li class="filter-option">
+                    <input
+                      type="checkbox"
+                      name="yousign"
+                      id="yousign"
+                      class="filter-option-checkbox"
+                    />
+                    <label for="yousign">Yousign</label>
+                  </li>
+                  <li class="filter-option">
+                    <input
+                      type="checkbox"
+                      name="company1"
+                      id="company1"
+                      class="filter-option-checkbox"
+                    />
+                    <label for="company1">Company 1</label>
+                  </li>
+                  <li class="filter-option">
+                    <input
+                      type="checkbox"
+                      name="company2"
+                      id="company2"
+                      class="filter-option-checkbox"
+                    />
+                    <label for="company2">Company 2</label>
+                  </li>
+                </ul>
+                <button type="button" class="view-all">View all...</button>
+              </div>
+            </div>
+          </li>
+          <li class="accordion-item">
+            <div class="accordion-item-head">
+              <input type="checkbox" name="filter-section" id="deal-source" />
+              <label for="deal-source"
+                >Deal source
+                <img
+                  class="open-closed-icon"
+                  src="angle-bottom-icon.svg"
+                  alt="Open or closed icon"
+                />
+              </label>
+            </div>
+            <div class="accordion-item-body hide">
+              <div class="accordion-item-content">
+                <ul class="filter-options">
+                  <li class="filter-option">
+                    <input
+                      type="checkbox"
+                      name="deal-sourcing-platforms"
+                      id="deal-sourcing-platforms"
+                      class="filter-option-checkbox"
+                    />
+                    <label for="deal-sourcing-platforms"
+                      >Deal Sourcing Platforms</label
+                    >
+                  </li>
+                  <li class="filter-option">
+                    <input
+                      type="checkbox"
+                      name="consulting-services"
+                      id="consulting-services"
+                      class="filter-option-checkbox"
+                    />
+                    <label for="consulting-services">Consulting Services</label>
+                  </li>
+                  <li class="filter-option">
+                    <input
+                      type="checkbox"
+                      name="network-access"
+                      id="network-access"
+                      class="filter-option-checkbox"
+                    />
+                    <label for="network-access">Network Access</label>
+                  </li>
+                </ul>
+                <button type="button" class="view-all">View all...</button>
+              </div>
+            </div>
+          </li>
+          <li class="accordion-item">
+            <div class="accordion-item-head">
+              <input type="checkbox" name="filter-section" id="status" />
+              <label for="status"
+                >Status
+                <img
+                  class="open-closed-icon"
+                  src="angle-bottom-icon.svg"
+                  alt="Open or closed icon"
+                />
+              </label>
+            </div>
+            <div class="accordion-item-body hide">
+              <div class="accordion-item-content">
+                <ul class="filter-options">
+                  <li class="filter-option">
+                    <input
+                      type="checkbox"
+                      name="luxury-cars"
+                      id="luxury-cars"
+                      class="filter-option-checkbox"
+                    />
+                    <label for="luxury-cars">Luxury Cars</label>
+                  </li>
+                  <li class="filter-option">
+                    <input
+                      type="checkbox"
+                      name="technology-products"
+                      id="technology-products"
+                      class="filter-option-checkbox"
+                    />
+                    <label for="technology-products">Technology Products</label>
+                  </li>
+                  <li class="filter-option">
+                    <input
+                      type="checkbox"
+                      name="art"
+                      id="art"
+                      class="filter-option-checkbox"
+                    />
+                    <label for="art">Art</label>
+                  </li>
+                </ul>
+                <button type="button" class="view-all">View all...</button>
+              </div>
+            </div>
+          </li>
+          <li class="accordion-item">
+            <div class="accordion-item-head">
+              <input type="checkbox" name="filter-section" id="date" />
+              <label for="date"
+                >Date
+                <img
+                  class="open-closed-icon"
+                  src="angle-bottom-icon.svg"
+                  alt="Open or closed icon"
+                />
+              </label>
+            </div>
+            <div class="accordion-item-body hide">
+              <div class="accordion-item-content">
+                <ul class="filter-options">
+                  <li class="filter-option">
+                    <input
+                      type="checkbox"
+                      name="year2025"
+                      id="year2025"
+                      class="filter-option-checkbox"
+                    />
+                    <label for="year2025">2025</label>
+                  </li>
+                  <li class="filter-option">
+                    <input
+                      type="checkbox"
+                      name="year2024"
+                      id="year2024"
+                      class="filter-option-checkbox"
+                    />
+                    <label for="year2024">2024</label>
+                  </li>
+                  <li class="filter-option">
+                    <input
+                      type="checkbox"
+                      name="year2023"
+                      id="year2023"
+                      class="filter-option-checkbox"
+                    />
+                    <label for="year2023">2023</label>
+                  </li>
+                  <li class="filter-option">
+                    <input
+                      type="checkbox"
+                      name="year2022"
+                      id="year2022"
+                      class="filter-option-checkbox"
+                    />
+                    <label for="year2022">2022</label>
+                  </li>
+                  <li class="filter-option">
+                    <input
+                      type="checkbox"
+                      name="year2021"
+                      id="year2021"
+                      class="filter-option-checkbox"
+                    />
+                    <label for="year2021">2021</label>
+                  </li>
+                  <li class="filter-option">
+                    <input
+                      type="checkbox"
+                      name="year2020"
+                      id="year2020"
+                      class="filter-option-checkbox"
+                    />
+                    <label for="year2020">2020</label>
+                  </li>
+                  <li class="filter-option">
+                    <input
+                      type="checkbox"
+                      name="year-smaller-2020"
+                      id="year-smaller-2020"
+                      class="filter-option-checkbox"
+                    />
+                    <label for="year-smaller-2020">Before 2020</label>
+                  </li>
+                </ul>
+                <button type="button" class="view-all">View all...</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </form>
+    </div>
     <script src="main.js"></script>
-</body>
+  </body>
 </html>

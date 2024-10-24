@@ -1,103 +1,96 @@
-
-// Radio-Buttons
-const accordion_items = document.getElementsByName("accordion-item");
-
-// Checkboxes mit Label
-const labels = document.querySelectorAll('.accordion-content label');
-const inputs = document.querySelectorAll('.accordion-content input');
-
-// Button zum toggeln des Panels
-const btn_filter_panel = document.querySelector('.btn-filter-panel');
-
-// Toolbar Buttons
-const btn_clear_all = document.querySelector('#clear-all');
-const btn_safe_view = document.querySelector('#save-view');
-
-// Button zum Anzeigen des gesamten Inhaltes eines Accordion-Items 
-const btn_view_all = document.querySelector(".btn-view-all");
-
-// Zuweisung der Funktionen, die zu den Buttons gehören.
-btn_clear_all.onclick = clear_all;
-btn_safe_view.onclick = save_view;
-btn_filter_panel.onclick = toggle_panel;
-btn_view_all.onclick = view_all;
-
-
-// Wenn ein Radio-Button (das Accordion-Item) betätigt wird, dann verstecke alle Checkboxes außer die ersten 5 und zeige den View-All Button.
-for (accordion_item of accordion_items){
-
-    accordion_item.onclick = view_selection;
+// Clear all filters
+function clear_filter_options(filter_options) {
+  for (filter_option of filter_options) {
+    filter_option.checked = false;
+  }
 }
 
+// get selected filters
+function get_selected_filters(filter_options) {
+  let selected_filters = [];
 
-// Zeige alle Elemente (Checkboxes + Label) des Accordion-Items
-function view_all () {
-    btn_view_all.style.display = 'none';
+  for (filter_option of filter_options) {
+    filter_option &&
+      filter_option.checked === true &&
+      selected_filters.push(filter_option.labels[0].firstChild.data);
+  }
 
-    for (let label of labels) {
-     
-        label.style.display = "inline-block"
-        
-    }
-
-    for (let input of inputs) {
-        
-        input.style.display = "inline-block"
-        
-    }
-
+  return selected_filters;
 }
 
-// Zeige die ersten 4 Elemente (Checkboxes + Label) des Accordion-Items
-function view_selection () {
-
-    btn_view_all.style.display = 'block';
-    
-    for (let [index, label] of labels.entries()) {
-        if (index > 4) {
-            label.style.display = "none"
-        }        
-    }
-
-    for (let [index, input] of inputs.entries()) {
-        if (index > 4) {
-            input.style.display = "none"
-        }
-    }
-
+// Toggle filter pannel
+function togglePanel() {
+  panel_btn.nextElementSibling.classList.toggle("toggled");
 }
 
-// Unselect all checkboxes
-function clear_all() {
+// Get HTML elements
+const accordion_items = document.querySelectorAll(".accordion-item");
+const filter_options = document.querySelectorAll(
+  '.accordion-item-body input[type="checkbox"]'
+);
+const panel_btn = document.querySelector(".panel-btn");
+const clear_all = document.querySelector(".clear-all");
+const save_view = document.querySelector(".save-view");
 
-    inputs.forEach((input)=>{
-        input.checked = false;
-    })
-}
+for (accordion_item of accordion_items) {
+  // Get HTML elements inside the accordion-item
+  const input = accordion_item.firstElementChild.firstElementChild;
+  const accordion_item_body = accordion_item.lastElementChild;
+  const view_all_btn = accordion_item_body.firstElementChild.lastElementChild;
+  const filter_options_item =
+    accordion_item_body.firstElementChild.firstElementChild.children;
+  const filter_options_length = filter_options_item.length;
 
-// Log all selected checkboxes to the console and close the panel
-function save_view() {
+  // Toggle accordion
+  input.onclick = function () {
+    accordion_item_body.classList.toggle("hide");
+  };
 
-    inputs.forEach((input)=>{
-        if (input.checked) {
-            console.log(input.id)
-        }
-    })
+  // Hide view all button for accordion-items with less then 6 filter options
+  if (filter_options_length < 6) {
+    view_all_btn.style.display = "none";
+  }
 
-    toggle_panel();
-}
-
-// open or close the panel
-function toggle_panel() {
-    const panel = document.querySelector('.panel');
-
-    // Die Zeile wird gebraucht, weil das Panel erst durch das zweite Betätigen des Filter-Buttons geöffnet wird.
-    const displayStyle = window.getComputedStyle(panel).display;
-
-    if (displayStyle === "none"){
-        panel.style.display = "block";
+  // Hide filter options
+  for (const [index, filter_option] of Array.from(
+    filter_options_item
+  ).entries()) {
+    if (index > 4) {
+      filter_option.classList.toggle("hide");
     }
-    else {
-        panel.style.display = "none";
+  }
+
+  // show or hide filter buttons
+  view_all_btn.onclick = function () {
+    for (let i = 5; i < filter_options_length; i++) {
+      filter_options_item[i].classList.toggle("hide");
     }
+    view_all_btn.innerHTML =
+      view_all_btn.innerHTML === "View all..." ? "View less" : "View all...";
+  };
 }
+
+// Toggle filter panel
+panel_btn.onclick = togglePanel;
+
+// Clear all
+clear_all.onclick = function () {
+  clear_filter_options(filter_options);
+};
+
+// Save view
+save_view.onclick = function () {
+  const selected_filters = get_selected_filters(filter_options);
+  console.log(selected_filters);
+  togglePanel();
+  clear_filter_options(filter_options);
+};
+
+// close accordion items on window load
+window.onload = function () {
+  for (accordion_item of accordion_items) {
+    const accordion_item_input =
+      accordion_item.firstElementChild.firstElementChild;
+    accordion_item_input.checked = false;
+  }
+};
