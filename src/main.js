@@ -60,7 +60,7 @@ for (accordion_item of accordion_items) {
     }
   }
 
-  // show or hide filter buttons
+  // Change view all/ view less buttons name onclick
   view_all_btn.onclick = function () {
     for (let i = 5; i < filter_options_length; i++) {
       filter_options_item[i].classList.toggle("hide");
@@ -73,12 +73,12 @@ for (accordion_item of accordion_items) {
 // Toggle filter panel
 panel_btn.onclick = togglePanel;
 
-// Clear all
+// Clear all filter options
 clear_all.onclick = function () {
   clear_filter_options(filter_options);
 };
 
-// Save view
+// Save view, log seleced filters to the console and close panel
 save_view.onclick = function () {
   const selected_filters = get_selected_filters(filter_options);
   console.log(selected_filters);
