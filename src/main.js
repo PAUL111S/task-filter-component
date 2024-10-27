@@ -36,14 +36,14 @@ for (accordion_item of accordion_items) {
   // Get HTML elements inside the accordion-item
   const input = accordion_item.firstElementChild.firstElementChild;
   const accordion_item_body = accordion_item.lastElementChild;
-  const view_all_btn = accordion_item_body.firstElementChild.lastElementChild;
+  const view_all_btn = accordion_item_body.firstElementChild.firstElementChild.lastElementChild;
   const filter_options_item =
-    accordion_item_body.firstElementChild.firstElementChild.children;
+    accordion_item_body.firstElementChild.firstElementChild.firstElementChild.children;
   const filter_options_length = filter_options_item.length;
 
   // Toggle accordion
   input.onclick = function () {
-    accordion_item_body.classList.toggle("hide");
+    accordion_item_body.classList.toggle("is-open");
   };
 
   // Hide view all button for accordion-items with less then 6 filter options

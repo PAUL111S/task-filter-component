@@ -44,7 +44,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
 }
 
 .toolbar-functions {
@@ -177,25 +176,29 @@ body {
 }
 
 .accordion-item-body {
-  background-color: #f7f8fa;
-  overflow: hidden;
-  max-height: 100vw;
-  padding: 0 1rem 0 1rem;
-  width: 100%;
-  transform: translateX(-1rem);
-  transition: max-height 500ms;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 500ms ease-out;
   font-size: 0.8rem;
-  overflow: auto;
 }
 
-.accordion-item-body.hide {
-  max-height: 0;
+.accordion-item-body.is-open {
+  grid-template-rows: 1fr;
+}
+
+.accordion-item-content-wrapper {
+  
+  width: 100%;
+  overflow: hidden;
+  padding: 0 1rem;
+  background-color: #f7f8fa;
+  transform: translateX(-1rem);
 }
 
 .accordion-item-content {
   display: flex;
   flex-direction: column;
-  margin: 0.5rem 0;
+  padding: 1rem 0;
 }
 
 .filter-options {
