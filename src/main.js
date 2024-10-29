@@ -1,3 +1,23 @@
+// Get max width panel
+function get_panel_max_width () {
+  const panel = document.querySelector(".panel");
+  const rect = panel.getBoundingClientRect();
+  const padding = parseInt(window.getComputedStyle(panel).getPropertyValue('padding'));
+  const border_width = parseInt(window.getComputedStyle(panel).getPropertyValue('border-width'));
+  return rect.right - 2 * (border_width + padding);
+  
+}
+
+// Set max width panel
+function set_panel_max_width () {
+  const panel = document.querySelector(".panel");
+  const max_width = get_panel_max_width();
+  panel.style.maxWidth = `${max_width}px`;
+}
+
+set_panel_max_width();
+
+
 // Clear all filters
 function clear_filter_options(filter_options) {
   for (filter_option of filter_options) {
@@ -86,11 +106,21 @@ save_view.onclick = function () {
   clear_filter_options(filter_options);
 };
 
-// close accordion items on window load
+
+
+
 window.onload = function () {
+  
+  // close accordion items on window load
   for (accordion_item of accordion_items) {
     const accordion_item_input =
       accordion_item.firstElementChild.firstElementChild;
     accordion_item_input.checked = false;
   }
 };
+
+
+window.onresize = function() {
+  // set panel max width on resize
+  set_panel_max_width();
+}
