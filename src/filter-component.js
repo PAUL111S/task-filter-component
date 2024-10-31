@@ -14,7 +14,7 @@ class FilterComponent {
     this.clear_all_btn = document.querySelector(clear_all_btn_selector);
     this.save_view_btn = document.querySelector(save_view_btn_selector);
     this.search_bar = document.querySelector(search_bar_selector);
-    this.filter_options = document.querySelector(filter_option_selector);
+    this.filter_options = document.querySelectorAll(filter_option_selector);
     this.accordion = new Accordion(accordion_selector);
 
     // Initial state
