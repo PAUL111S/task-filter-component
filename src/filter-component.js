@@ -48,7 +48,7 @@ class FilterComponent {
   // Show or hide panel
   togglePanel() {
     this.isPanelOpen = !this.isPanelOpen;
-    this.panel.classList.toggle("isOpen");
+    this.panel.classList.toggle("is-open");
   }
 
   // Select or deselect a filter option
@@ -91,6 +91,6 @@ class FilterComponent {
   // close panel
   close() {
     this.isPanelOpen = false;
-    this.panel.classList.remove("isOpen");
+    this.panel.classList.remove("is-open");
   }
 }
