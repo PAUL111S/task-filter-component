@@ -148,7 +148,7 @@ body {
 }
 
 .accordion-item-head input[type="checkbox"] + label img {
-  transition-duration: 500ms;
+  transition: transform 500ms ease-out;
 }
 
 .accordion-item-head input[type="checkbox"]:checked + label img {
@@ -157,12 +157,12 @@ body {
 
 .accordion-item-head input[type="checkbox"] + label {
   opacity: 0.5;
-  transition-duration: 500ms;
+  transition: opacity 500ms ease-out, border-bottom 500ms ease-out;
 }
 
 .accordion-item-head input[type="checkbox"]:checked + label {
   opacity: 1;
-  border-bottom: none;
+  border-bottom: transparent;
 }
 
 .view-all {
