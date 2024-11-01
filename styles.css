@@ -27,7 +27,7 @@ body {
 
 .panel {
   position: absolute;
-  display: flex;
+  display: none;
   flex-direction: column;
   right: 0;
   border: 2px solid rgba(0, 0, 0, 0.499);
@@ -37,7 +37,7 @@ body {
 }
 
 .panel.is-open {
-  display: none;
+  display: block;
 }
 
 .toolbar {
